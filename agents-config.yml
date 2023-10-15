@@ -1,0 +1,17 @@
+---
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+
+  - job_name: 'grafana-agent'
+    static_configs:
+      - targets: ['localhost:9101']
+
+prometheus:
+  wal_directory: /var/lib/grafana-agent/wal
+  remote_write:
+    - url: "http://путь-к-вашему-prometheus:9090/write"
